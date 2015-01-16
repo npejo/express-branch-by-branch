@@ -1,0 +1,1 @@
+/** TODO: implement article entity handler methods */

@@ -1,0 +1,10 @@
+extends layout
+block content
+    h1= title
+    form.form-signin
+        h2.form-signin-heading Please sign in
+        label.hidden(for="inputEmail") Email
+        input#inputEmail.form-control(placeholder="Email address", required="", autofocus="", type="email")
+        label.hidden(for="inputPassword") Password
+        input#inputPassword.form-control(placeholder="Password", required="", type="password")
+        button(class="btn btn-lg btn-primary btn-block" type="submit") Sign in
