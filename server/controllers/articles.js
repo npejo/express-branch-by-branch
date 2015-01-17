@@ -1,4 +1,5 @@
 exports.getArticles = function() {
+    // mock articles data
     var articles = [
         {
             'id': '1',
