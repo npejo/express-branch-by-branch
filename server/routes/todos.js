@@ -6,12 +6,12 @@ var router = express.Router();
 var authMiddleware = require('../middleware/authentication');
 
 // load controllers
-var articlesCtrl = require('../controllers/articles');
+var todoCtrl = require('../controllers/todos');
 
 /* GET /articles - list of all articles */
 router.get('/', authMiddleware.checkAuthenticated, function (req, res) {
-    var articles = articlesCtrl.getArticles();
-    res.json(articles);
+    var todo = todoCtrl.getTodosByUser();
+    res.json(todo);
 });
 
 module.exports = router;

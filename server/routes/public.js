@@ -6,21 +6,27 @@ var path = require('path');
 // load middleware
 var authMiddleware = require('../middleware/authentication');
 
-// load controllers
-var articlesCtrl = require('../controllers/articles');
-
 /* GET / - home page. */
 router.get('/', function (req, res) {
-    var articles = articlesCtrl.getArticles();
-    res.render('index', {title: 'Express Branch by Branch', articles: articles});
+    res.render('index', {title: 'Express Branch by Branch'});
 });
 
-/* GET /signin - sign in page. */
-router.get('/signin', function (req, res) {
-    res.render('signin', {title: 'Sign in'});
+/* GET /tour - sign in page. */
+router.get('/tour', function (req, res) {
+    res.render('tour', {title: 'Features Tour - Demo Todo', active_tour: true});
 });
 
-/* GET /app - blog administration. */
+/* GET /about - sign in page. */
+router.get('/about', function (req, res) {
+    res.render('about', {title: 'About - Demo Todo', active_about: true});
+});
+
+/* GET /register - new user register page. */
+router.get('/register', function (req, res) {
+    res.render('register', {title: 'Register'});
+});
+
+/* GET /app - Serve the app for logged users */
 router.get('/app', authMiddleware.redirectNotAuthenticated, function (req, res) {
   res.sendFile(path.join(__dirname, '../../client/dist/index.html'));
 });
