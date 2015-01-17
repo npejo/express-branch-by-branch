@@ -25,7 +25,7 @@ app.use(express.static(path.join(__dirname, 'server/site/public')));
 app.use(express.static(path.join(__dirname, 'client/dist'), {index: ''}));
 
 app.use('/', publicRouter);
-app.use('/api/todos', todosRouter);
+app.use('/api', todosRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
