@@ -8,11 +8,14 @@ var hbs = require('hbs');
 
 var publicRouter = require('./server/routes/public');
 var todosRouter = require('./server/routes/todos');
+var appRouter = require('./server/routes/app');
 var app = express();
 
-// view engine setup
+// setup handlebars as view engine
 app.set('views', path.join(__dirname, 'server/site/views'));
 app.set('view engine', 'hbs');
+
+// register view partials directory
 hbs.registerPartials(path.join(__dirname, 'server/site/views/partials'));
 
 // uncomment after placing your favicon in /public
@@ -21,10 +24,15 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'server/site/public')));
-app.use(express.static(path.join(__dirname, 'client/dist'), {index: ''}));
 
-app.use('/', publicRouter);
+// set the directories from which the static content is served
+// static content related to the public website
+app.use(express.static(path.join(__dirname, 'server/site/public')));
+
+// static content related to the frontend single page application
+app.use(express.static(path.join(__dirname, 'client'), {index: ''}));
+
+app.use('/', [publicRouter, appRouter]);
 app.use('/api', todosRouter);
 
 // catch 404 and forward to error handler

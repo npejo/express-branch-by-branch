@@ -3,9 +3,6 @@ var express = require('express');
 var router = express.Router();
 var path = require('path');
 
-// load middleware
-var authMiddleware = require('../middleware/authentication');
-
 /* GET / - home page. */
 router.get('/', function (req, res) {
     res.render('index', {title: 'Express Branch by Branch'});
@@ -24,11 +21,6 @@ router.get('/about', function (req, res) {
 /* GET /register - new user register page. */
 router.get('/register', function (req, res) {
     res.render('register', {title: 'Register'});
-});
-
-/* GET /app - Serve the app for logged users */
-router.get('/app', authMiddleware.redirectNotAuthenticated, function (req, res) {
-  res.sendFile(path.join(__dirname, '../../client/dist/index.html'));
 });
 
 module.exports = router;
