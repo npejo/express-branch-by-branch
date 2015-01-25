@@ -2,16 +2,15 @@
 var express = require('express');
 var router = express.Router();
 
-// load middleware
-var authMiddleware = require('../middleware/authentication');
+module.exports = function(config) {
+    // load controllers
+    var todoCtrl = require(config.root + '/server/controllers/todos');
 
-// load controllers
-var todoCtrl = require('../controllers/todos');
+    /* GET /todos - list of all todos for logged user */
+    router.get('/todos', function (req, res) {
+        var todo = todoCtrl.getTodosByUser();
+        res.json(todo);
+    });
 
-/* GET /todo - list of all todo for logged user */
-router.get('/todos', authMiddleware.checkAuthenticated, function (req, res) {
-    var todo = todoCtrl.getTodosByUser();
-    res.json(todo);
-});
-
-module.exports = router;
+    return router;
+};
