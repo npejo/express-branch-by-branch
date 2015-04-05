@@ -6,6 +6,7 @@
  * no authentication strategy implemented yet
  */
 exports.checkAuthenticated = function (req, res, next) {
+    // hardcoded authenticated = true should be removed once there is any authentication strategy implemented
     var authenticated = true;
     if (authenticated) return next();
     res.json(401, 'Unauthorized');
@@ -17,6 +18,7 @@ exports.checkAuthenticated = function (req, res, next) {
  * no authentication strategy implemented yet.
  */
 exports.redirectNotAuthenticated = function(req, res, next) {
+    // hardcoded authenticated = true should be removed once there is any authentication strategy implemented
     var authenticated = true;
     if (authenticated) return next();
     res.redirect('/');
