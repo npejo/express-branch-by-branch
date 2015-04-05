@@ -1,10 +1,13 @@
+'use strict';
+
 // load dependencies
 var express = require('express');
 var router = express.Router();
 
-module.exports = function(config) {
+module.exports = function(config, passport) {
     /* GET / - home page. */
     router.get('/', function (req, res) {
+        console.log(req.flash());
         res.render('index', {title: 'Express Branch by Branch'});
     });
 
@@ -22,6 +25,21 @@ module.exports = function(config) {
     router.get('/register', function (req, res) {
         res.render('register', {title: 'Register'});
     });
+
+    /* POST /signin - existing user login attempt. */
+    router.post('/signin', passport.authenticate('local', {
+            successRedirect: config.appUrl,
+            failureRedirect: '/',
+            failureFlash: true
+        })
+    );
+
+    /* POST /register - new user register page. */
+    router.post('/register', passport.authenticate('local', {
+            successRedirect: config.appUrl,
+            failureRedirect: '/register'
+        })
+    );
 
     return router;
 };

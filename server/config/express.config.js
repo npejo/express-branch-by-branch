@@ -12,7 +12,7 @@ var flash = require('connect-flash');
 var compression = require('compression');
 var hbs = require('hbs');
 
-module.exports = function (config, dbConnection) {
+module.exports = function (config, dbConnection, passport) {
     var app = express();
 
     // use gzip compression, should be placed before express.static
@@ -52,11 +52,15 @@ module.exports = function (config, dbConnection) {
         }
     ));
 
+    // use passport session
+    app.use(passport.initialize());
+    app.use(passport.session());
+
     // connect-flash middleware for flash messages - should be declared after session initialization
     app.use(flash());
 
     //Setup routes
-    require('./routes.config')(config, app);
+    require('./routes.config')(config, app, passport);
 
     // catch 404 and forward to error handler
     app.use(function (req, res, next) {

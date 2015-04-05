@@ -10,5 +10,7 @@ module.exports = {
     sessionSecret: 'QOOKIESECRET!@#$#@%$#%#%$#',
 
     // The name of the MongoDB collection to store sessions in
-    sessionCollection: 'sessions'
+    sessionCollection: 'sessions',
+
+    appUrl: '/app'
 };

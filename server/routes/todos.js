@@ -1,8 +1,10 @@
+'use strict';
+
 // load dependencies
 var express = require('express');
 var router = express.Router();
 
-module.exports = function(config) {
+module.exports = function(config, passport) {
     // load controllers
     var todoCtrl = require(config.root + '/server/controllers/todos');
 

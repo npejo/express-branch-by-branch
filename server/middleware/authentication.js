@@ -6,8 +6,7 @@
  * no authentication strategy implemented yet
  */
 exports.checkAuthenticated = function (req, res, next) {
-    var authenticated = true;
-    if (authenticated) return next();
+    if (req.isAuthenticated()) return next();
     res.json(401, 'Unauthorized');
 };
 
@@ -17,7 +16,6 @@ exports.checkAuthenticated = function (req, res, next) {
  * no authentication strategy implemented yet.
  */
 exports.redirectNotAuthenticated = function(req, res, next) {
-    var authenticated = true;
-    if (authenticated) return next();
+    if (req.isAuthenticated()) return next();
     res.redirect('/');
 };
