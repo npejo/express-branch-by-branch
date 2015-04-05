@@ -8,7 +8,7 @@ module.exports = function(config) {
     var db = mongoose.createConnection(config.db, options);
 
     // Error handler
-    mongoose.connection.on('error', function (err) {
+    db.on('error', function (err) {
         console.log(err);
     });
 

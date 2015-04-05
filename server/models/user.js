@@ -34,16 +34,16 @@ UserSchema
         return this._password;
     });
 
-/**
- * Validations
- */
 
 var validatePresenceOf = function (value) {
     return value && value.length;
 };
 
-// the validations below only apply if you are signing up with email and password
+/**
+ * Validations
+ */
 
+// the validations below only apply if you are signing up with email and password
 UserSchema.path('name').validate(function (name) {
     if (this.doesNotRequireValidation()) return true;
     return name.trim().length;
