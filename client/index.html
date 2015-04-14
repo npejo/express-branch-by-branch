@@ -6,11 +6,38 @@
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="app_css/style.css"/>
 </head>
-<body>
+<body ng-app="todoExample">
     <div class="container">
-        <h1>Blog Administration</h1>
-        <p>administrator successfully logged in</p>
+        <div ng-view></div>
     </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular-route.js"></script>
+    <script src="app_js/app-module.js"></script>
+    <script src="app_js/app-config.js"></script>
+    <script src="app_js/controllers/todo-controller.js"></script>
+    <script src="app_js/services/todoService.js"></script>
+    <script type="text/ng-template" id="todo-list.html">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th colspan="2">Your Todos</th>
+                </tr>
+                <tr>
+                    <th>Title</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="todo in todos">
+                    <td>{{todo.title}}</td>
+                    <td>
+                        <button type="button">Action</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </script>
 </body>
 </html>
