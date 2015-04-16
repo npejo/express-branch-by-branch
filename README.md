@@ -1,6 +1,6 @@
 # mean-branch-by-branch
 
-Step by step guide how to setup and develop application using: nodejs, express, mongo (mongoosejs) and passportjs.
+Step by step guide how to setup and develop application using: NodeJS (ExpressJS, PassportJS), MongoDB (mongoosejs), AngularJS.
 
 **Boilerplate** - developers that understand the used technologies and like to skip the configuration part can easy get clean boilerplate for their project, only with the dependencies they need, just checkout to the appropriate branch and start from there.
 
